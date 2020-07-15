@@ -11,13 +11,22 @@
 	<meta charset="utf-8">
 	<title>Pexip Sample Personal</title>
 
+	<link rel="manifest" href="/manifest.json">
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="images/hello-icon-152.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="white"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Hello World">
+	<meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"></script>
-
 	<script type="text/javascript" src="js/index.js" async></script>
 
 	<!-- DetectRTC -->
@@ -51,19 +60,14 @@
 		            <div class="cf">
 		                <label><input type="radio" name="role" id="id_host" class="webrtcinput" value="2"> Host </label>
 		            </div>
+		            
 		            <div class="cf">
 		                <label><input type="radio" name="role" id="id_guest" class="webrtcinput" value="1"> Guest </label>
 		            </div>
 
 		            <div id="pinentry" class="main site join hidden" style="margin-top:20px;">
-				        <!-- <form> -->
 				            <input type="password" value="" name="pin" id="id_pin" placeholder="Enter the conference PIN" class="webrtcinput" required>
-
-				            <!-- <input type="button" value="Join Conference" name="join" id="id_join" class="webrtcbutton" onClick="submitPinEntry();"> -->
-				        <!-- </form> -->
 				    </div>
-		            <!-- <input type="button" value="Join Conference" name="join" id="id_join" class="webrtcbutton" onClick="submitSelectRole();" -->
-		            
 		        </form>
 		    </div>
 
