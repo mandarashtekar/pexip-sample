@@ -6,9 +6,20 @@
 
 'use strict';
 
-$(document).ready(function(){
-    console.log("inside main");
-});
+window.onload = () => {
+  'use strict';
+
+  console.log("inside index.js - onload");
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./sw.js');
+  }
+}
+
+/*$(document).ready(function(){
+    console.log("inside index.js - document.ready");
+});*/
 
 $('input:radio[name="role"]').change(function() {
         console.log("Radio selected");
