@@ -1,8 +1,12 @@
-var cacheName = 'pexip-sample';
+var cacheName = 'pexip-sample-personal';
 var filesToCache = [
   'index.html',
+  'videoconf.html',
   'css/style.css',
-  'js/index.js'
+  'js/index.js',
+  'js/webui.js',
+  'js/main.js',
+  'js/pexrtcV20.js'
 ];
 
 /* Start the service worker and cache all of the app's content */
