@@ -9,7 +9,7 @@
 window.onload = () => {
     console.log("inside index.js - onload");
 
-    if ('serviceWorker' in navigator) {
+    /*if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js', { scope: '/' })
           .then(function (registration){
             console.log('Service worker registered successfully on scope: ' +registration.scope);
@@ -17,7 +17,7 @@ window.onload = () => {
             console.error('Error during service worker registration:', e);
           });
     }
-    /*self.addEventListener('install', function(event) {
+    self.addEventListener('install', function(event) {
         console.log('Installed sw.js', event);
     });
 
@@ -34,8 +34,6 @@ window.onload = () => {
         }
     });
 }
-
-var butInstall = document.getElementById('butInstall');
 
 /*$(document).ready(function(){
     console.log("inside index.js - document.ready");
@@ -67,6 +65,9 @@ $("#join-conf").on("click", function(){
   // initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
 });
 
+/* ************ Push Notification ************ */
+/*var butInstall = document.getElementById('butInstall');
+
 // Push Notifications for PWA
 butInstall.addEventListener('click', () => {
   console.log("Button clicked");
@@ -85,7 +86,7 @@ function showNotification(title, message) {
           });
       });
   }
-}
+}*/
 
 /*------------------- PERMISSIONS API - START -------------------*/
 /*const permissionsToRequest = {

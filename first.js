@@ -7,6 +7,16 @@ window.onload = () => {
             console.error('Error during service worker registration:', e);
           });
     }
+    /*self.addEventListener('install', function(event) {
+        console.log('Installed sw.js', event);
+    });
+
+    self.addEventListener('activate', function(event) {
+        console.log('Activated sw.js', event);
+    });
+    self.addEventListener('fetch', function(event){
+        console.log("Fetch - Requested event: " +event.request);
+    });*/
 
     Notification.requestPermission(result => {
         if (result === 'granted') {
@@ -15,6 +25,7 @@ window.onload = () => {
     });
 }
 
+/* *************** Push Notification - START *************** */
 var butInstall = document.getElementById('butInstall');
 
 // Push Notifications for PWA
@@ -36,3 +47,4 @@ function showNotification(title, message) {
       });
   }
 }
+/* *************** Push Notification - END *************** */
