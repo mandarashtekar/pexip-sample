@@ -26,11 +26,15 @@ window.onload = () => {
     self.addEventListener('activate', function(event) {
         console.log('Activated sw.js', event);
     });
+    self.addEventListener('fetch', function(event){
+        console.log(event.request);
+    });*/
+    
     Notification.requestPermission(result => {
         if (result === 'granted') {
           console.log("Thanks for giving me permissions");
         }
-    });*/
+    });
 }
 
 var butInstall = document.getElementById('butInstall');
