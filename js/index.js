@@ -19,11 +19,18 @@ window.onload = () => {
             console.error('Error during service worker registration:', e);
           });
     }
+    /*self.addEventListener('install', function(event) {
+        console.log('Installed sw.js', event);
+    });
+
+    self.addEventListener('activate', function(event) {
+        console.log('Activated sw.js', event);
+    });
     Notification.requestPermission(result => {
         if (result === 'granted') {
-          console.log("thanks for giving me permissions");
+          console.log("Thanks for giving me permissions");
         }
-    });
+    });*/
 }
 
 var butInstall = document.getElementById('butInstall');
