@@ -14,7 +14,7 @@ window.onload = () => {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
           .then(function (registration){
-            console.log('Service worker registered successfully on scope' + registration.scope);
+            console.log('Service worker registered successfully on scope: ' +registration.scope);
           }).catch(function(e){
             console.error('Error during service worker registration:', e);
           });
