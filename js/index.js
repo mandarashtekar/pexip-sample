@@ -7,44 +7,71 @@
 'use strict';
 
 window.onload = () => {
-  'use strict';
+    'use strict';
 
-  console.log("inside index.js - onload");
+    console.log("inside index.js - onload");
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js');
-  }
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+    }
+    Notification.requestPermission(result => {
+        if (result === 'granted') {
+          console.log("thanks for giving me permissions");
+        }
+    });
 }
+
+var butInstall = document.getElementById('butInstall');
 
 /*$(document).ready(function(){
     console.log("inside index.js - document.ready");
 });*/
 
 $('input:radio[name="role"]').change(function() {
-        console.log("Radio selected");
-        if ($(this).val() == '2') {
-            console.log("Host Role selected");
-            pinentry.classList.remove("hidden");
-        } else {
-            console.log("Guest Role selected");
-            pinentry.classList.add("hidden");
-        }
-    });
+  console.log("Radio selected");
+  if ($(this).val() == '2') {
+    console.log("Host Role selected");
+    pinentry.classList.remove("hidden");
+  } else {
+    console.log("Guest Role selected");
+    pinentry.classList.add("hidden");
+  }
+});
 
 $("#join-conf").on("click", function(){
-    console.log("join-conf clicked");
+  console.log("join-conf clicked");
 
-    var alias = $("#id_alias").val();
-    var name = $("#id_name").val();
-    var bandwidth = "1280";
-    var source = "Join+Conference";
-    var id_guest = document.getElementById('id_guest');
-    var pin = $("#id_pin").val();
+  var alias = $("#id_alias").val();
+  var name = $("#id_name").val();
+  var bandwidth = "1280";
+  var source = "Join+Conference";
+  var id_guest = document.getElementById('id_guest');
+  var pin = $("#id_pin").val();
 
-    window.location.href = "videoconf.html?alias="+alias+"&name="+name+"&bandwidth="+bandwidth+"&source="+source+"&pin="+pin;
+  window.location.href = "videoconf.html?alias="+alias+"&name="+name+"&bandwidth="+bandwidth+"&source="+source+"&pin="+pin;
 
-    // initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
+  // initialise("vve-tpmg-lab.kp.org", alias, bandwidth, name, "", source);
 });
+
+// Push Notifications for PWA
+butInstall.addEventListener('click', () => {
+  console.log("Button clicked");
+  showNotification('So nice to have you here!', 'Hey there!');
+});
+
+function showNotification(title, message) {
+  console.log("inside showNotification");
+    if ('Notification' in window) {
+      navigator.serviceWorker.ready.then(registration => {
+          registration.showNotification('This is a sample', {
+            //body: 'Buzz! Buzz!',
+            //tag: 'vibration-sample'
+            body: message,
+            tag: title
+          });
+      });
+  }
+}
 
 /*------------------- PERMISSIONS API - START -------------------*/
 /*const permissionsToRequest = {
