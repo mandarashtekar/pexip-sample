@@ -1,5 +1,6 @@
 var cacheName = 'pexip-sample-personal';
 var filesToCache = [
+  '',
   'index.html',
   'videoconf.html',
   'css/style.css',
