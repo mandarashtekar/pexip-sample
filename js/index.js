@@ -27,7 +27,7 @@ window.onload = () => {
         console.log('Activated sw.js', event);
     });
     self.addEventListener('fetch', function(event){
-        console.log(event.request);
+        console.log("Fetch - Requested event: " +event.request);
     });*/
     
     Notification.requestPermission(result => {
