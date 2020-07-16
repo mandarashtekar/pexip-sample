@@ -1,9 +1,8 @@
 var cacheName = 'pexip-sample';
 var filesToCache = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/index.js'
+  'index.html',
+  'css/style.css',
+  'js/index.js'
 ];
 
 /* Start the service worker and cache all of the app's content */
