@@ -1,11 +1,11 @@
 window.onload = () => {
 	if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js', { scope: '/' })
-          .then(function (registration){
-            console.log('Service worker registered successfully on scope: ' +registration.scope);
-          }).catch(function(e){
-            console.error('Error during service worker registration:', e);
-          });
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(function (registration){
+          console.log('Service worker registered successfully on scope: ' +registration.scope);
+        }).catch(function(e){
+          console.error('Error during service worker registration:', e);
+        });
     }
     /*self.addEventListener('install', function(event) {
         console.log('Installed sw.js', event);
