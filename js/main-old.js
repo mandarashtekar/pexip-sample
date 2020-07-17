@@ -27,7 +27,25 @@ window.onload = function () {
     // rtc.connect(pin);
 }
 
+/* -------------------- CallStats - START -------------------- */
+/*var callstats;
+//initialize the app with application tokens
+var AppID     = "468948303";
+var AppSecret = "sDcYsqQkO25I:WCIYaqj5sXu2uruyNyT3cH6qlUu4PAgWHSKZZLIeXF0=";
+var localUserID = "abc123";
+var remoteUserID = "xyz123";
+var csInitCallback;
+var csStatsCallback;
+var configParams;*/
+/* -------------------- CallStats - END -------------------- */
+
 const videoElement = document.querySelector('video');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+const blurBtn = document.getElementById('blur-btn');
+const unblurBtn = document.getElementById('unblur-btn');
+const callStats = document.getElementById('callstats-btn');
 
 const audioInputSelect = document.querySelector('select#audioSource');
 const audioOutputSelect = document.querySelector('select#speakerSource');
@@ -136,3 +154,130 @@ videoSelect.onchange = start;
 
 
 start();
+
+
+videoElement.onplaying = () => {
+	console.log("videoElement playing");
+
+	canvas.height = videoElement.videoHeight;
+	canvas.width = videoElement.videoWidth;
+};
+
+/*  function startVideoStream() {
+navigator.mediaDevices.getUserMedia({video: true, audio: false})
+  .then(stream => {
+    videoElement.srcObject = stream;
+    videoElement.play();
+  })
+  .catch(err => {
+    startBtn.disabled = false;
+    blurBtn.disabled = true;
+    stopBtn.disabled = true;
+    alert(`Following error occured: ${err}`);
+  });
+}*/
+
+blurBtn.addEventListener('click', e => {
+	console.log("Blur button clicked");
+	blurBtn.hidden = true;
+	unblurBtn.hidden = false;
+
+	videoElement.hidden = true;
+	canvas.hidden = false;
+
+	loadBodyPix();
+});
+
+unblurBtn.addEventListener('click', e => {
+	console.log("Unblur button clicked");
+	blurBtn.hidden = false;
+	unblurBtn.hidden = true;
+
+	videoElement.hidden = false;
+	canvas.hidden = true;
+});
+
+function loadBodyPix() {
+	var options = {
+	  multiplier: 0.75,
+	  stride: 32,
+	  quantBytes: 4
+	}
+	bodyPix.load(options)
+	  .then(net => perform(net))
+	  .catch(err => console.log(err))
+}
+
+async function perform(net) {
+	while (blurBtn.hidden) {
+	  const segmentation = await net.segmentPerson(video);
+
+	  const backgroundBlurAmount = 6;
+	  const edgeBlurAmount = 2;
+	  const flipHorizontal = true;
+
+	  bodyPix.drawBokehEffect(
+	    canvas, videoElement, segmentation, backgroundBlurAmount,
+	    edgeBlurAmount, flipHorizontal);
+	}
+}
+
+/* -------------------- CallStats - START -------------------- */
+// callStats.addEventListener('click', e => {
+function initialiseCallStats(pcObject){
+  console.log("CallStat button clicked");
+
+  //initialize the app with application tokens
+  var AppID     = "468948303";
+  var AppSecret = "sDcYsqQkO25I:WCIYaqj5sXu2uruyNyT3cH6qlUu4PAgWHSKZZLIeXF0=";
+  var localUserID = "abc123";
+  var remoteUserID = "xyz123";
+  var csInitCallback;
+  var csStatsCallback;
+  var configParams;
+  var conferenceID = "m.ncal.med.0.0.1111.2222";
+
+  // callStats();
+  callstats = new callstats();
+  //localUserID is generated or given by the origin server
+  callstats.initialize(AppID, AppSecret, localUserID, csInitCallback, csStatsCallback, configParams);
+  
+  /*function csInitCallback(csError, csErrMsg) {
+    console.log("Status: errCode= " + csError + " errMsg= " + csErrMsg ); }
+  }*/
+  // console.log("pcObject: " +pcObject);
+
+  function pcCallback (err, msg) {
+    console.log("Monitoring status: "+ err + " msg: " + msg);
+  };
+
+  /*function createOfferError(err) {
+    callstats.reportError(pcObject, conferenceID, callstats.webRTCFunctions.createOffer, err);
+  }*/
+
+  // pcObject is created, tell callstats about it
+  // pick a fabricUsage enumeration, if pc is sending both media and data: use multiplex.
+  var usage = callstats.fabricUsage.multiplex;
+  var fabricAttributes = {
+    remoteEndpointType:   callstats.endpointType.peer,
+    fabricTransmissionDirection:  callstats.transmissionDirection.sendrecv
+    };
+
+  // remoteUserID is the recipient's userID
+  // conferenceID is generated or provided by the origin server (webrtc service)
+  // pcObject is created, tell callstats about it
+  // pick a fabricUsage enumeration, if pc is sending both media and data: use multiplex.
+  callstats.addNewFabric(pcObject, remoteUserID, usage, conferenceID, fabricAttributes, pcCallback);
+
+  // let the "negotiationneeded" event trigger offer generation
+  /*pcObject.onnegotiationneeded = function () {
+    // create offer
+    pcObject.createOffer().then(
+      localDescriptionCreatedCallback,
+      createOfferErrorCallback
+    );
+  }*/
+}
+// });
+
+/* -------------------- CallStats - END -------------------- */

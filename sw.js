@@ -4,6 +4,7 @@ var filesToCache = [
   'index.html',
   'videoconf.html',
   'css/style.css',
+  'first.js',
   'js/index.js',
   'js/webui.js',
   'js/main.js',
