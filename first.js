@@ -126,7 +126,7 @@ window.onload = () => {
       });
     } else{
       console.log("It's an iPhone, not calling Notification");
-      butInstall.hide();
+      $("#butInstall").hide();
     }
 };
 
