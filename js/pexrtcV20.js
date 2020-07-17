@@ -914,7 +914,7 @@ PexRTCCall.prototype.connect = function() {
         if ('iceServers' in self.parent.pcConfig) {
             self.pc = new PeerConnection(self.parent.pcConfig);
             // pcObject = self.pc;
-            initialiseCallStats(self.pc);
+            // initialiseCallStats(self.pc);
         } else {
             self.pc = new PeerConnection(null);
         }
