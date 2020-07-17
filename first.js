@@ -113,7 +113,7 @@ window.onload = () => {
         console.log("Fetch - Requested event: " +event.request);
     });*/
 
-    if (navigator.platform.indexOf('iPhone') == "false") {
+    if (os.name === 'iPhone') {
       console.log("Not an iPhone");
 
       Notification.requestPermission(result => {
