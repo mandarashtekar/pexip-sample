@@ -2,7 +2,7 @@ window.onload = () => {
     'use strict';
 
     /* *************** User Agent details - START *************** */
-    var e;
+    var e, debug;
 
     var module = {
         options: [],
