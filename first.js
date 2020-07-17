@@ -3,6 +3,7 @@ window.onload = () => {
 
     /* *************** User Agent details - START *************** */
     var e, debug;
+    var butInstall = document.getElementById('butInstall');
 
     var module = {
         options: [],
@@ -116,7 +117,7 @@ window.onload = () => {
     });*/
 
     if (e.os.name != 'iPhone') {
-      console.log("Not an iPhone");
+      console.log("Not an iPhone, calling Notification");
 
       Notification.requestPermission(result => {
         if (result === 'granted') {
@@ -125,13 +126,11 @@ window.onload = () => {
       });
     } else{
       console.log("It's an iPhone, not calling Notification");
+      butInstall.hide();
     }
 };
 
 /* *************** Push Notification - START *************** */
-var butInstall = document.getElementById('butInstall');
-
-// Push Notifications for PWA
 butInstall.addEventListener('click', () => {
   console.log("Button clicked");
   showNotification('So nice to have you here!', 'Hey there!');
