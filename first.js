@@ -2,6 +2,8 @@ window.onload = () => {
     'use strict';
 
     /* *************** User Agent details - START *************** */
+    var e;
+
     var module = {
         options: [],
         header: [navigator.platform, navigator.userAgent, navigator.appVersion, navigator.vendor, window.opera],
@@ -74,7 +76,7 @@ window.onload = () => {
         }
     };
     
-    var e = module.init(),
+    e = module.init(),
         debug = '';
     
     debug += 'os.name = ' + e.os.name + '<br/>';
@@ -113,7 +115,7 @@ window.onload = () => {
         console.log("Fetch - Requested event: " +event.request);
     });*/
 
-    if (os.name === 'iPhone') {
+    if (e.os.name != 'iPhone') {
       console.log("Not an iPhone");
 
       Notification.requestPermission(result => {
