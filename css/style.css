@@ -35,7 +35,7 @@ ol, ul {
 @font-face {
   font-family: 'Open Sans';
   src: url('fonts/opensans-regular-webfont.eot') format('embedded-opentype'),
-    url('fonts/opensans-regular-webfont.woff') format('woff'),
+    url('css/fonts/opensans-regular-webfont.woff') format('woff'),
     url('fonts/opensans-regular-webfont.ttf') format('truetype'),
     url('fonts/opensans-regular-webfont.svg') format('svg');
   font-weight: normal;
