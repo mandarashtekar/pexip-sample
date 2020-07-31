@@ -1,10 +1,10 @@
 window.onload = () => {
     'use strict';
 
-    /* *************** User Agent details - START *************** */
     var e, debug;
-    var butInstall = document.getElementById('butInstall');
+    // var sendNotBtn = document.getElementById('sendNotBtn');
 
+    /* *************** User Agent details - START *************** */
     var module = {
         options: [],
         header: [navigator.platform, navigator.userAgent, navigator.appVersion, navigator.vendor, window.opera],
@@ -96,7 +96,7 @@ window.onload = () => {
 
     /* *************** User Agent details - END *************** */
 
-
+    /* *************** SERVICE WORKER - START *************** */
   	if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js')
           .then(function (registration){
@@ -105,7 +105,7 @@ window.onload = () => {
             console.error('Error during service worker registration:', e);
           });
     }
-    /*self.addEventListener('install', function(event) {
+    self.addEventListener('install', function(event) {
         console.log('Installed sw.js', event);
     });
 
@@ -114,24 +114,29 @@ window.onload = () => {
     });
     self.addEventListener('fetch', function(event){
         console.log("Fetch - Requested event: " +event.request);
-    });*/
+    });
+    /* *************** SERVICE WORKER - END *************** */
 
-    if (e.os.name != 'iPhone') {
-      console.log("Not an iPhone, calling Notification");
+    /* *************** NOTIFICATION REQUEST - START *************** */
+    if (navigator.platform.indexOf('iPhone') == "false") {
+        console.log("Not an iPhone, calling Notification");
 
-      Notification.requestPermission(result => {
-        if (result === 'granted') {
-          console.log("Thanks for giving me permissions");
-        }
-      });
+        Notification.requestPermission(result => {
+            if (result === 'granted') {
+                console.log("Thanks for the Notification permissions");
+            }
+        });
     } else{
-      console.log("It's an iPhone, not calling Notification");
-      $("#butInstall").hide();
+        console.log("It's an iPhone, not calling Notification");
+        // $("#sendNotBtn").hide();
     }
+    /* *************** NOTIFICATION REQUEST - END *************** */
 };
 
 /* *************** Push Notification - START *************** */
-butInstall.addEventListener('click', () => {
+var sendNotBtn = document.getElementById('sendNotBtn');
+
+sendNotBtn.addEventListener('click', () => {
   console.log("Button clicked");
   showNotification('So nice to have you here!', 'Hey there!');
 });

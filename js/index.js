@@ -67,22 +67,3 @@ function requestPermissions() {
 document.querySelector("#request").addEventListener("click", requestPermissions);*/
 
 /*------------------- PERMISSIONS API - END -------------------*/
-
-/*------------------- DetectRTC - START -------------------*/
-/*if (DetectRTC.isWebRTCSupported === false) {
-    console.log('Please use Chrome or Firefox.');
-}
-
-if (DetectRTC.hasWebcam === false) {
-    console.log('Please install an external webcam device.');
-}
-
-if (DetectRTC.hasMicrophone === false) {
-    console.log('Please install an external microphone device.');
-}
-
-if (DetectRTC.hasSpeakers === false && (DetectRTC.browser.name === 'Chrome' || DetectRTC.browser.name === 'Edge')) {
-    console.log('Oops, your system can not play audios.');
-}*/
-/*------------------- DetectRTC - END -------------------*/
-
