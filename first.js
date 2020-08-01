@@ -142,15 +142,20 @@ sendNotBtn.addEventListener('click', () => {
 });
 
 function showNotification(title, message) {
-  console.log("inside showNotification");
+    console.log("inside showNotification");
+    var options = {
+        body: message,
+        tag: title
+    }
     if ('Notification' in window) {
       navigator.serviceWorker.ready.then(registration => {
-          registration.showNotification('This is a sample', {
+          registration.showNotification('This is a sample!', options);
+          /*registration.showNotification('This is a sample', {
             //body: 'Buzz! Buzz!',
             //tag: 'vibration-sample'
             body: message,
             tag: title
-          });
+          });*/
       });
   }
 }
