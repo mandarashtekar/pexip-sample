@@ -145,11 +145,12 @@ function showNotification(title, message) {
     console.log("inside showNotification");
     var options = {
         body: message,
-        tag: title
+        tag: title,
+        icon: 'images/hello-icon-128.png'
     }
     if ('Notification' in window) {
       navigator.serviceWorker.ready.then(registration => {
-          registration.showNotification('This is a sample!', options);
+          registration.showNotification('You are about to join a Video conference!', options);
           /*registration.showNotification('This is a sample', {
             //body: 'Buzz! Buzz!',
             //tag: 'vibration-sample'
