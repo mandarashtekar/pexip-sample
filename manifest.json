@@ -10,7 +10,7 @@
       "src": "images/hello-icon-144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     }, {
       "src": "images/hello-icon-152.png",
       "sizes": "152x152",
@@ -36,5 +36,7 @@
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "white",
-  "theme_color": "white"
+  "theme_color": "white",
+  "prefer_related_applications": false,
+  "scope": "."
 }
