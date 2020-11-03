@@ -1,6 +1,7 @@
 {
   "name": "Pexip Sample",
   "short_name": "PexipSample",
+  "description": "A simple PWA Pexip sample app",
   "icons": [{
       "src": "images/hello-icon-128.png",
       "sizes": "128x128",
