@@ -150,15 +150,21 @@ function showNotification(title, message) {
         icon: 'images/hello-icon-128.png'
     }
     if ('Notification' in window) {
-      navigator.serviceWorker.ready.then(registration => {
-          registration.showNotification('You are about to join a Video conference!', options);
-          /*registration.showNotification('This is a sample', {
-            //body: 'Buzz! Buzz!',
-            //tag: 'vibration-sample'
-            body: message,
-            tag: title
-          });*/
-      });
-  }
+        console.log("inside notification-if");
+        navigator.serviceWorker.ready.then(registration => {
+            registration.showNotification('Visit available to join!', options);
+            /*registration.showNotification('This is a sample', {
+                //body: 'Buzz! Buzz!',
+                //tag: 'vibration-sample'
+                body: message,
+                tag: title
+            });*/
+        });
+    }
 }
+
+setInterval (function(){
+    console.log("Inside setInterval");
+    showNotification('setInterval - Notification!', 'Hey there!');
+}, 30000);
 /* *************** Push Notification - END *************** */
