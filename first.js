@@ -118,7 +118,7 @@ window.onload = () => {
     /* *************** SERVICE WORKER - END *************** */
 
     /* *************** NOTIFICATION REQUEST - START *************** */
-    if (navigator.platform.indexOf('iPhone') == "false") {
+    if (navigator.platform.indexOf('iPhone') != true) {
         console.log("Navigator.platform: ", navigator.platform);
         console.log("Not an iPhone, calling Notification");
 
