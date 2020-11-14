@@ -165,6 +165,6 @@ function showNotification(title, message) {
 
 setInterval (function(){
     console.log("Inside setInterval");
-    showNotification('setInterval - Notification!', 'Hey there!');
+    showNotification('setInterval - Notification!', 'Automatic Notification!');
 }, 30000);
 /* *************** Push Notification - END *************** */
