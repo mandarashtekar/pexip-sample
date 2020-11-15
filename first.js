@@ -132,6 +132,16 @@ window.onload = () => {
         // $("#sendNotBtn").hide();
     }
     /* *************** NOTIFICATION REQUEST - END *************** */
+
+    /* *************** CHECK WHETHER APP IS INSTALLED - START *************** */
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        console.log('PWA installed - display-mode is standalone');
+    }
+    
+    window.addEventListener('appinstalled', (evt) => {
+        console.log('PWA app installed');
+    });
+    /* *************** CHECK WHETHER APP IS INSTALLED - END *************** */
 };
 
 /* *************** Push Notification - START *************** */
